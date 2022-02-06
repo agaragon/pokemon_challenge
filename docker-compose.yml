@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  www:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  pokemon_api:
+    image: agaragon/pokemon_api:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/home/app
+    env_file:
+      - .env
+    networks:
+      - mongo-network
+    depends_on:
+      - mongodb

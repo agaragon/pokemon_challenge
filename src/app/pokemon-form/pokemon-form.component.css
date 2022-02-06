@@ -1,0 +1,16 @@
+.primary{
+    border-radius: 5px;
+    height: 3rem;
+    width: 5rem;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main{
+    width: 100vw;
+    height: 100vh;
+}
