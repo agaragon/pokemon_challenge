@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import axios, { AxiosInstance } from "axios";
-import { timeout } from 'rxjs';
 
 
 @Component({
@@ -23,9 +22,8 @@ export class PokemonFormComponent implements OnInit {
   }
 
   async onSave<T>(): Promise<void> {
-    this.axiosClient
     try {
-      var axiosResponse = await this.axiosClient.post<T>(
+      await this.axiosClient.post<T>(
         "http://localhost:8080/pokemon",
         { nome: this.nome }
       );
