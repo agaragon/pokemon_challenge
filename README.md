@@ -14,3 +14,11 @@ Para acessar a aplicação, vá para `http://localhost:80`
 Após acessar a porta 80, você deve se deparar com um campo juntamente com um botão. Escreva o nome do pokemon que você capturou e então
 clique em "Registrar Captura". O id do pokemon, juntamente com a sua imagem serão buscados na api, salvos no banco de dados, devolvidos para
 o frontend e imediatamente redenrizados.
+
+## Testes
+
+Para rodar os testes, utilize o comando `ng test`
+Apenas três testes foram criados:
+- um para verificar a se a mensagem do botão de capturar pokemon está disponível
+- um para verificar a se a mensagem do placeholder do input do nome do pokemon está disponível
+- um para verificar a se a mensagem de que não há pokemons capturados aparece quando não há pokemons capturados.
