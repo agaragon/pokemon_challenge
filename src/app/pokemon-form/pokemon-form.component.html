@@ -1,4 +1,6 @@
 <div class="container main">
-    <input (keyup)="onKey($event)">
-    <button class="primary" (click)="onSave()">Registrar Captura</button>
+    <div class="container box">
+        <input class="pokemon-name" (keyup)="onKey($event)" placeholder="Digite o nome do pokemon capturado">
+        <button class="primary" (click)="onSave()">Registrar Captura</button>
+    </div>
 </div>
