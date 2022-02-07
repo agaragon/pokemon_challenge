@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import axios, { AxiosInstance } from "axios";
+import { Pokemon } from '../models/Pokemon';
 
 
 @Component({
@@ -10,7 +11,7 @@ import axios, { AxiosInstance } from "axios";
 export class PokemonFormComponent implements OnInit {
   nome: string;
   axiosClient: AxiosInstance;
-
+  @Input() pokemons: Pokemon[] | undefined;
   constructor() {
     this.nome = ""
     this.axiosClient = axios.create({
@@ -21,12 +22,16 @@ export class PokemonFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSave<T>(): Promise<void> {
+  async onSave(): Promise<void> {
     try {
-      await this.axiosClient.post<T>(
+      let pokemon: Pokemon
+      await this.axiosClient.post(
         "http://localhost:8080/pokemon",
         { nome: this.nome }
-      );
+      ).then(output => {
+        pokemon = new Pokemon(output.data.nome, output.data.id, output.data.imageUrl)
+        this.pokemons?.push(pokemon)
+      });
     }
     catch (error) {
       return (Promise.reject(console.log(error)));
