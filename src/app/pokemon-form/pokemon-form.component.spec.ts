@@ -8,9 +8,9 @@ describe('PokemonFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PokemonFormComponent ]
+      declarations: [PokemonFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +19,15 @@ describe('PokemonFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Mensagem do botão deve aparecer', () => {
     expect(component).toBeTruthy();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('button')?.textContent).toContain('Registrar Captura');
+  });
+
+  it('Mensagem do input deve aparecer', () => {
+    expect(component).toBeTruthy();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('input')?.placeholder).toContain('Digite o nome do pokemon capturado');
   });
 });
