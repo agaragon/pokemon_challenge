@@ -12,12 +12,14 @@ export class AppComponent {
   title = 'pokemon_challenge';
   axiosClient: AxiosInstance;
   pokemons: Pokemon[];
+  errors: string[];
 
   constructor() {
     this.pokemons = []
     this.axiosClient = axios.create({
       timeout: 3000
     });
+    this.errors = []
   }
 
   async ngOnInit(): Promise<void> {
@@ -35,6 +37,7 @@ export class AppComponent {
       });
     }
     catch (error) {
+      this.errors.push("Não foi possível buscar os seus pokemons")
       return (Promise.reject(console.log(error)));
     }
   }

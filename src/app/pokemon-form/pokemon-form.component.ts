@@ -13,6 +13,7 @@ export class PokemonFormComponent implements OnInit {
   nome: string;
   axiosClient: AxiosInstance;
   @Input() pokemons: Pokemon[] | undefined;
+  @Input() errors: string[] | undefined;
   constructor() {
     this.nome = ""
     this.axiosClient = axios.create({
@@ -32,9 +33,13 @@ export class PokemonFormComponent implements OnInit {
       ).then(output => {
         pokemon = new Pokemon(output.data.nome, output.data.id, output.data.imageUrl)
         this.pokemons?.push(pokemon)
+        while (this.errors && this.errors.length > 0) {
+          this.errors?.pop();
+        }
       });
     }
     catch (error) {
+      this.errors?.push("Não foi possível registrar a captura do seu pokemon")
       return (Promise.reject(console.log(error)));
     }
   }

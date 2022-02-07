@@ -12,7 +12,7 @@ services:
       - pokemonapi
       
   pokemonapi:
-    image: agaragon/pokemonapi:2.1
+    image: agaragon/pokemonapi:2.2
     ports:
       - "8080:8080"
     env_file:

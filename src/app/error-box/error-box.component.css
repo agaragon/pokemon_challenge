@@ -1,0 +1,14 @@
+.error-card{
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+p{
+    border-radius: 1rem;
+    background-color: #FF7F7F;
+    width: 30vw;
+    padding: 2rem;
+    font-size: 2rem;
+    
+}

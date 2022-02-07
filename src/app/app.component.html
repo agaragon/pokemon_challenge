@@ -1,2 +1,3 @@
-<app-pokemon-form [pokemons]="this.pokemons"></app-pokemon-form>
+<app-error-box *ngIf="this.errors && this.errors.length>0" [errors]="this.errors"></app-error-box>
+<app-pokemon-form [pokemons]="this.pokemons" [errors]="this.errors"></app-pokemon-form>
 <app-pokemon-list [pokemons]="this.pokemons"></app-pokemon-list>
