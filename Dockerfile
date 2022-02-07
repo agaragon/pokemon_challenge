@@ -1,5 +1,5 @@
 #Estágio de build
-FROM node:latest AS builder
+FROM node:16.10 AS builder
 WORKDIR /usr/local/app
 COPY ./package.json /usr/local/app
 COPY ./package-lock.json /usr/local/app

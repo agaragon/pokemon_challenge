@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import axios, { AxiosInstance } from "axios";
 import { Pokemon } from '../models/Pokemon';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class PokemonFormComponent implements OnInit {
     try {
       let pokemon: Pokemon
       await this.axiosClient.post(
-        "http://localhost:8080/pokemon",
+        environment.pokemonApiHost,
         { nome: this.nome }
       ).then(output => {
         pokemon = new Pokemon(output.data.nome, output.data.id, output.data.imageUrl)

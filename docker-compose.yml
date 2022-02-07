@@ -6,15 +6,34 @@ services:
         dockerfile: Dockerfile
     ports:
       - "80:80"
-  pokemon_api:
-    image: agaragon/pokemon_api:latest
+    networks:
+      - mongo-network
+    depends_on:
+      - pokemonapi
+      
+  pokemonapi:
+    image: agaragon/pokemonapi:2.1
     ports:
       - "8080:8080"
-    volumes:
-      - .:/home/app
     env_file:
       - .env
     networks:
       - mongo-network
     depends_on:
       - mongodb
+
+
+  mongodb:
+    restart: unless-stopped
+    image: mongo:4.2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - 27017:27017
+
+    networks:
+      - mongo-network
+networks:
+  mongo-network:
+    driver: bridge

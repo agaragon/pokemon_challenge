@@ -1,5 +1,10 @@
-<div *ngFor="let pokemon of this.pokemons; index as i">
-    <p>Pokemon capturado: {{pokemon.nome}}</p>
-    <p>Id do pokemon: {{pokemon.id}}</p>
-    <img src="{{pokemon.imageUrl}}" alt="">
+<div *ngIf="this.pokemons && this.pokemons.length>0" class="pokemon-container">
+    <div class="card" *ngFor="let pokemon of this.pokemons; index as i">
+        <p>{{pokemon.nome.toUpperCase()}}</p>
+        <p>Id do pokemon: {{pokemon.id}}</p>
+        <img src="{{pokemon.imageUrl}}" alt="">
+    </div>
+</div>
+<div class="no-pokemon-container" *ngIf="this.pokemons && this.pokemons.length == 0">
+    <p>Ainda não capturou nenhum pokemon</p>
 </div>

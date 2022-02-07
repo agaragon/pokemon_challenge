@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import axios, { AxiosInstance } from 'axios';
+import { environment } from 'src/environments/environment';
 import { Pokemon } from './models/Pokemon';
 
 @Component({
@@ -22,7 +23,7 @@ export class AppComponent {
   async ngOnInit(): Promise<void> {
     try {
       await this.axiosClient.get(
-        "http://localhost:8080/pokemon",
+        environment.pokemonApiHost,
       ).then(response => {
         let pokemonObj: Pokemon
         for (let pokemon in response.data) {
